@@ -1,2 +1,0 @@
-1. 
-2. Existen otros HDL usados en la industria como Verilog, y VHDL que son mas robustos y complejos que el lenguaje proveido por Nand2Tetris, pues incluyen caracteristicas de mas alto nivel como FORs e IFs que eliminan la necesidad de escribir codigo HDL repetitivo.

@@ -1,0 +1,1 @@
+# Resumen de la práctica
