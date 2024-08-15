@@ -1,3 +1,4 @@
 # Respuestas - preguntas adicionales 
-1. 
+1. Como primera consideración , se debe tener en cuenta que al trabajar con el proyecto Nand2Tetris es tener claro los conceptos de lógica booleana vistos en cursos pasados , ya que , la base de dicho proyecto radica desde las compuertas lógicas básicas (especificamente la Nand) entonces se debe entender el funcionamiento de estas con base en las entradas propuestas.
+Como segunda consideración la compresión y estudio del lenguaje HDL implementado para el proyecto , tener un orden adecuado , entender la sintaxis del lenguaje y demas.
 2. Existen otros HDL usados en la industria como Verilog, y VHDL que son mas robustos y complejos que el lenguaje proveido por Nand2Tetris, pues incluyen caracteristicas de mas alto nivel como FORs e IFs que eliminan la necesidad de escribir codigo HDL repetitivo.
