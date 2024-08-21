@@ -39,7 +39,7 @@ Por otro lado, **VHDL** (VHSIC Hardware Description Language) es conocido por se
 
 Ambos lenguajes, Verilog y VHDL, superan ampliamente en capacidades al HDL simplificado de Nand2Tetris, que está diseñado principalmente con fines educativos. Nand2Tetris se enfoca en enseñar los principios fundamentales del diseño de hardware, sirviendo como un excelente punto de partida antes de que los estudiantes se aventuren en el uso de lenguajes HDL más complejos y poderosos que se emplean en la industria.
 
-Este contraste destaca la utilidad de Nand2Tetris como una introducción al mundo del diseño de hardware, antes de explorar herramientas más robustas que son estándar en el desarrollo de sistemas digitales industriales.d
+Este contraste destaca la utilidad de Nand2Tetris como una introducción al mundo del diseño de hardware, antes de explorar herramientas más robustas que son estándar en el desarrollo de sistemas digitales industriales.
 
 ### Fuentes
 - [Nand2Tetris Official Site](https://www.nand2tetris.org)
