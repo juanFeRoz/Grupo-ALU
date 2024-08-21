@@ -1,2 +1,3 @@
 # Práctica : Lógica Booleana
 Los dispositivos digitales que empleamos hoy en día , como nuestros télefonos inteligentes,computadoras y demas dispositivos, estan conformados por un conjunto de chips que estan diseñados para procesar y almacenar la información necesaria para dichos dispositivos.
+xd
