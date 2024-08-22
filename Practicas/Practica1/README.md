@@ -193,17 +193,64 @@ CHIP Or16 {
 ### Mux4Way16
 Esta compuerta es un multiplexor que selecciona una de las cuatro entradas para cada cuarteto de bits , realizando el proceso para cada uno de los 16 cuartetos de bits para los 4 buses de entrada a,b,c y d.La selección se realiza mediante los 2 bits de selección bajo la siguiendo la siguiente lógica : <br>
 ![imagen](https://github.com/user-attachments/assets/c4fabdc8-0cbb-4da1-8034-cb332dfea8fd)
+```
+CHIP Mux4Way16 {
+    IN a[16], b[16], c[16], d[16], sel[2];
+    OUT out[16]; 
+    PARTS:
+    Mux16(a=a,b=b,sel=sel[0],out=o1);
+    Mux16(a=c,b=d,sel=sel[0],out=o2);
+    Mux16(a=o1,b=o2,sel=sel[1],out=out);
+}
+```
 
 ### Mux8Way16
-
+```
+CHIP Mux8Way16 {
+    IN a[16], b[16], c[16], d[16],
+       e[16], f[16], g[16], h[16],
+       sel[3];
+    OUT out[16];
+    PARTS:
+    Mux16(a=a,b=b,sel=sel[0],out=o1);
+    Mux16(a=c,b=d,sel=sel[0],out=o2);
+    Mux16(a=o1,b=o2,sel=sel[1],out=o3);
+    Mux16(a=e,b=f,sel=sel[0],out=o4);
+    Mux16(a=g,b=h,sel=sel[0],out=o5);
+    Mux16(a=o4,b=o5,sel=sel[1],out=o6);
+    Mux16(a=o3,b=o6,sel=sel[2],out=out);
+}
+```
 ### DMux4Way
 Este componente lógico es un demultiplexor (DMux) de 4 vías que recibe una entrada (in) junto con dos señales de selección (sel[0] y sel[1]), y redirige la entrada a una de las cuatro salidas posibles (a, b, c o d) dependiendo del valor de las señales de selección. <br>
 
 ![imagen](https://github.com/user-attachments/assets/2a57b45c-f932-4048-ae76-61e7be4e9827)
 
+```
+CHIP DMux4Way {
+    IN in, sel[2];
+    OUT a, b, c, d;
+    PARTS:
+    DMux(in=in,sel=sel[1],a=o1,b=o2);
+    DMux(in=o1,sel=sel[0],a=a,b=b);
+    DMux(in=o2,sel=sel[0],a=c,b=d);
+}
+```
+
 ### Dmux8Way
 Este dispositivo convierte una entrada única en ocho salidas posibles (a, b, c, d, e, f, g o h) mediante tres señales de selección. Este proceso se realiza en dos etapas: primero, un DMux divide la entrada en dos rutas, y luego, dos DMux4Way toman cada una de esas rutas y las dividen en cuatro salidas finales según los valores de las señales de selección. <br>
 ![image](https://github.com/user-attachments/assets/e3c6b200-ad7c-4c2d-94ab-411e31d7e25d)
+
+```
+CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+    PARTS:
+    DMux(in=in,sel=sel[2],a=o1,b=o2);
+    DMux4Way(in=o1,sel=sel[0..1],a=a,b=b,c=c,d=d);
+    DMux4Way(in=o2,sel=sel[0..1],a=e,b=f,c=g,d=h);
+}
+```
 
 
 
