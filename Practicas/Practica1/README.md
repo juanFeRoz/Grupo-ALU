@@ -237,7 +237,7 @@ CHIP Mux4Way16 {
 
 ![mux8way16](https://github.com/user-attachments/assets/6bb6f6af-df5e-4c4b-8c24-29ac7f3f0854)
 
-funciona como un multiplexor de 8 entradas de 16 bits cada una. Usa una selección de 3 bits (sel[3]) para determinar cuál de las 8 entradas (a, b, c, d, e, f, g, h) se enviará a la salida de 16 bits (out[16]).
+Este componente funciona como un multiplexor de 8 entradas de 16 bits cada una. Usa una selección de 3 bits (sel[3]) para determinar cuál de las 8 entradas (a, b, c, d, e, f, g, h) se enviará a la salida de 16 bits (out[16]).
 
 ```
 CHIP Mux8Way16 {
