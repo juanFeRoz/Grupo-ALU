@@ -197,9 +197,13 @@ Esta compuerta es un multiplexor que selecciona una de las cuatro entradas para 
 ### Mux8Way16
 
 ### DMux4Way
+Este componente lógico es un demultiplexor (DMux) de 4 vías que recibe una entrada (in) junto con dos señales de selección (sel[0] y sel[1]), y redirige la entrada a una de las cuatro salidas posibles (a, b, c o d) dependiendo del valor de las señales de selección. <br>
+
 ![imagen](https://github.com/user-attachments/assets/2a57b45c-f932-4048-ae76-61e7be4e9827)
 
 ### Dmux8Way
+Este dispositivo convierte una entrada única en ocho salidas posibles (a, b, c, d, e, f, g o h) mediante tres señales de selección. Este proceso se realiza en dos etapas: primero, un DMux divide la entrada en dos rutas, y luego, dos DMux4Way toman cada una de esas rutas y las dividen en cuatro salidas finales según los valores de las señales de selección. <br>
+![image](https://github.com/user-attachments/assets/e3c6b200-ad7c-4c2d-94ab-411e31d7e25d)
 
 
 
