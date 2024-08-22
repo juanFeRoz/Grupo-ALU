@@ -100,6 +100,7 @@ CHIP DMux {
 }
 ```
 ### Mux4Way16
+Esta compuerta es un multiplexor que selecciona una de las cuatro entradas para cada cuarteto de bits , realizando el proceso para cada uno de los 16 cuartetos de bits para los 4 buses de entrada a,b,c y d.La selección se realiza mediante los 2 bits de selección bajo la siguiendo la siguiente lógica : <br>
 ![imagen](https://github.com/user-attachments/assets/c4fabdc8-0cbb-4da1-8034-cb332dfea8fd)
 
 ### Mux8Way16
