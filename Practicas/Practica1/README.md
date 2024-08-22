@@ -131,7 +131,7 @@ CHIP Not16 {
 ```
 ### And16
 
-![Captura de pantalla 2024-08-22 084947](https://github.com/user-attachments/assets/f7baf12e-6f81-4f81-835f-c96e7b204a6b)
+![And16](https://github.com/user-attachments/assets/ab960ad2-0915-441d-8bd4-299078f44baf)
 
 Una compuerta And16 aplica la operación Booleana And a cada respectivo par de entradas. Para su funcionamiento se utiliza un par de arreglos de 16 elementos para un total de 32 entradas y, un arreglo de 16 elementos para la salida.
 
@@ -161,7 +161,7 @@ CHIP And16 {
 ```
 ### Or16
 
-![Captura de pantalla 2024-08-22 090454](https://github.com/user-attachments/assets/327c04f2-f48a-42d7-ad47-1d8240de60d8)
+![Or16](https://github.com/user-attachments/assets/9c5f7c4d-a17b-44ab-85fa-ba2301a4d004)
 
 Una compuerta Or16 aplica la operación Booleana Or a cada respectivo par de entradas. Para su funcionamiento se utiliza un par de arreglos de 16 elementos para un total de 32 entradas y, un arreglo de 16 elementos para la salida.
 
