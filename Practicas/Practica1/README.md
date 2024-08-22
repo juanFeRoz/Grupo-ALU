@@ -127,7 +127,7 @@ CHIP DMux {
 
 ![not16](https://github.com/user-attachments/assets/efa6d35b-0dd7-4ffb-b5fd-f672c5823f68)
 
-Es un NOT que tiene 16 entradas y 16 salidas en forma de un bus de 16 bits. 
+El circuito Not16 implementa una operación de negación bit a bit sobre un bus de 16 bits. Esto significa que cada bit de la entrada se invierte individualmente para producir la salida correspondiente.
 
 ```
 CHIP Not16 {
