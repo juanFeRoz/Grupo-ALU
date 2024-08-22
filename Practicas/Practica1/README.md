@@ -62,6 +62,30 @@ CHIP Or {
     Not(in=notand , out=out );
 }
 ```
+
+### XOR
+
+El circuito que implementa la compuerta XOR puede entenderse mediante el uso de compuertas lógicas básicas como Not, And, y Or.
+
+![image](https://github.com/user-attachments/assets/3c20693f-5a63-43d0-a4db-1c50ecce26f4)
+
+La operación XOR (o "Exclusive OR") se define de la siguiente manera: la salida es 1 si una y solo una de las dos entradas es 1. Esto significa que si ambas entradas son iguales, la salida será 0.
+
+```
+CHIP Xor {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Not(in=a , out=na );
+    Not(in=b , out=nb );
+    And(a=na , b=b , out=and1 );
+    And(a=a , b=nb , out=and2 );
+    Or(a=and1 , b=and2 , out=out );
+}
+```
+La compuerta XOR se puede ver como una combinación de condiciones donde se detecta cuando las entradas son diferentes. Al combinar estas condiciones con una OR, obtenemos la operación deseada. El uso de la negación en las entradas y en las condiciones intermedias es lo que permite implementar la función XOR de manera eficiente.
+
 ### MUX
 
 ![image](https://github.com/user-attachments/assets/8738b205-2edf-42bd-a7a9-b8a20d4b5ff3)
