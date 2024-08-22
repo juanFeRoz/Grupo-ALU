@@ -1,7 +1,7 @@
 # Práctica : Lógica Booleana
 Los dispositivos digitales que empleamos hoy en día , como nuestros télefonos inteligentes,computadoras y demas dispositivos, estan conformados por un conjunto de chips que estan diseñados para procesar y almacenar la información necesaria para dichos dispositivos.
-Por lo cual se hace necesario comprender el funcionamiento básico de los componentes (chips) , tambien denominados compuertas , que parten como el componente básico para nuestro estudio de arquitectura de computadoras.
-Una compuerta es un dispositivo físico que implementa una función lógica , como And , Or , XOr y las diferentes operaciones que se pueden realizar entre ellas combinandolas entre si.
+Por lo cual se hace necesario comprender el funcionamiento básico de los componentes (chips) , tambien denominados compuertas , que parten como el componente básico para nuestro estudio de arquitectura de computadoras.<br>
+Una compuerta es un dispositivo físico que implementa una función lógica , como And , Or , XOr y las diferentes operaciones que se pueden realizar entre ellas combinandolas entre si.El proyecto 1 nos plantea como a partir del proceso de abstracción de las compuertas lógicas, estas se pueden implementar eficientemente empleando compuertas ya implementadas, siendo mas especificos para dicho proyecto , a partir de la compuerta universal NAnd se construiran el conjunto elemental de compuertas lógicas And , Or , XOr , Mux , las versiones bit a bit y las multidireccionales.La implementación se realizó con el uso del lengujae HDL implementado en el proyecto NAND2Tetris.
 
 ## Implementacion de los chips
 
@@ -97,3 +97,8 @@ CHIP DMux {
     And(a=in , b=notsel , out=a );
 }
 ```
+
+<b>Referencias<b>
+<ul>
+<li>Nisan, N., & Schocken, S. (2021). The elements of computing systems: building a modern computer from first principles. MIT press
+<ul>
