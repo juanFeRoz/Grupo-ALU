@@ -98,8 +98,9 @@ CHIP DMux {
     And(a=in , b=notsel , out=a );
 }
 ```
-### Mux4Wat16
+### Mux4Way16
 ![imagen](https://github.com/user-attachments/assets/2a57b45c-f932-4048-ae76-61e7be4e9827)
+
 
 
 ## <b>Referencias<b>
