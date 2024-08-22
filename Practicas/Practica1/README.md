@@ -99,7 +99,14 @@ CHIP DMux {
 }
 ```
 ### Mux4Way16
+![imagen](https://github.com/user-attachments/assets/c4fabdc8-0cbb-4da1-8034-cb332dfea8fd)
+
+### Mux8Way16
+
+### DMux4Way
 ![imagen](https://github.com/user-attachments/assets/2a57b45c-f932-4048-ae76-61e7be4e9827)
+
+### Dmux8Way
 
 
 
