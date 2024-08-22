@@ -8,6 +8,7 @@ En este repositorio se podran encontrar alojados todas las implementaciones de l
 ## Implementación de los chips en HDL
 
 ### NOT
+
 ![images](https://github.com/user-attachments/assets/50e68a81-1c3b-4afa-a19a-0cc1b085511a)
 
 En la tabla de verdad del chip NAND se puede observar que cuando los inputs son iguales la compuerta los invierte, lo cual es el comportamiento deseado para el chip NOT
@@ -45,7 +46,6 @@ CHIP And {
 
 ### OR
 
-
 ![657636_623645_ans_b5043da31fb448249144c1398f9d83eb](https://github.com/user-attachments/assets/13f537e1-d316-46d5-ad31-2c7e71169e54)
 
 Usando la ley de D'Morgan se deduce que el NAND es un OR con sus dos entradas invertidas, por lo tanto si se invierten de nuevo las dos entradas del NAND terminamos con una compuerta OR gracias a la ley de doble negacion.
@@ -62,10 +62,9 @@ CHIP Or {
     Not(in=notand , out=out );
 }
 ```
-### Mux
+### MUX
+
 ![image](https://github.com/user-attachments/assets/8738b205-2edf-42bd-a7a9-b8a20d4b5ff3)
-
-
 
 Un multiplexor que recibe dos señales como input y selecciona una de las dos como output. Se implemento a partir de las expresiones logicas derivadas de su tabla de verdad simplificada. Si *sel* es 0, el output es igual a la señal *a* y cuando *sel* es 1, el output sera igual a *b*
 
@@ -82,7 +81,7 @@ CHIP Mux {
 }
 ```
 
-### DMux
+### DMUX
 
 ![image](https://github.com/user-attachments/assets/f31cbfd8-7ad1-40f3-953a-5ab615dca1d2)
 
@@ -105,6 +104,7 @@ CHIP DMux {
 ![not16](https://github.com/user-attachments/assets/efa6d35b-0dd7-4ffb-b5fd-f672c5823f68)
 
 Es un NOT que tiene 16 entradas y 16 salidas en forma de un bus de 16 bits. 
+
 ```
 CHIP Not16 {
     IN in[16];
@@ -129,7 +129,8 @@ CHIP Not16 {
     Not(in=in[15] , out=out[15] );
 }
 ```
-### And16
+
+### AND16
 
 ![And16](https://github.com/user-attachments/assets/ab960ad2-0915-441d-8bd4-299078f44baf)
 
@@ -159,7 +160,8 @@ CHIP And16 {
     And(a=a[15] , b=b[15] , out=out[15] );
 }
 ```
-### Or16
+
+### OR16
 
 ![Or16](https://github.com/user-attachments/assets/9c5f7c4d-a17b-44ab-85fa-ba2301a4d004)
 
@@ -190,9 +192,12 @@ CHIP Or16 {
 }
 ```
 
-### Mux4Way16
+### MUX4WAY16
+
 Esta compuerta es un multiplexor que selecciona una de las cuatro entradas para cada cuarteto de bits , realizando el proceso para cada uno de los 16 cuartetos de bits para los 4 buses de entrada a,b,c y d.La selección se realiza mediante los 2 bits de selección bajo la siguiendo la siguiente lógica : <br>
+
 ![imagen](https://github.com/user-attachments/assets/c4fabdc8-0cbb-4da1-8034-cb332dfea8fd)
+
 ```
 CHIP Mux4Way16 {
     IN a[16], b[16], c[16], d[16], sel[2];
@@ -204,7 +209,12 @@ CHIP Mux4Way16 {
 }
 ```
 
-### Mux8Way16
+### MUX8WAY16
+
+![mux8way16](https://github.com/user-attachments/assets/6bb6f6af-df5e-4c4b-8c24-29ac7f3f0854)
+
+funciona como un multiplexor de 8 entradas de 16 bits cada una. Usa una selección de 3 bits (sel[3]) para determinar cuál de las 8 entradas (a, b, c, d, e, f, g, h) se enviará a la salida de 16 bits (out[16]).
+
 ```
 CHIP Mux8Way16 {
     IN a[16], b[16], c[16], d[16],
@@ -221,7 +231,8 @@ CHIP Mux8Way16 {
     Mux16(a=o3,b=o6,sel=sel[2],out=out);
 }
 ```
-### DMux4Way
+### DMUX4WAY
+
 Este componente lógico es un demultiplexor (DMux) de 4 vías que recibe una entrada (in) junto con dos señales de selección (sel[0] y sel[1]), y redirige la entrada a una de las cuatro salidas posibles (a, b, c o d) dependiendo del valor de las señales de selección. <br>
 
 ![imagen](https://github.com/user-attachments/assets/2a57b45c-f932-4048-ae76-61e7be4e9827)
@@ -237,7 +248,8 @@ CHIP DMux4Way {
 }
 ```
 
-### Dmux8Way
+### DMUX8WAY
+
 Este dispositivo convierte una entrada única en ocho salidas posibles (a, b, c, d, e, f, g o h) mediante tres señales de selección. Este proceso se realiza en dos etapas: primero, un DMux divide la entrada en dos rutas, y luego, dos DMux4Way toman cada una de esas rutas y las dividen en cuatro salidas finales según los valores de las señales de selección. <br>
 ![image](https://github.com/user-attachments/assets/e3c6b200-ad7c-4c2d-94ab-411e31d7e25d)
 
@@ -254,7 +266,7 @@ CHIP DMux8Way {
 
 
 
-## <b>Referencias<b>
+## <b>REFERENCIAS<b>
 <ul>
 <li>Nisan, N., & Schocken, S. (2021). The elements of computing systems: building a modern computer from first principles. MIT press
 <ul>
