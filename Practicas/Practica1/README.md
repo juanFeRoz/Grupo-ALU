@@ -216,6 +216,60 @@ CHIP Or16 {
 }
 ```
 
+### MUX16
+
+![MUX16](https://github.com/user-attachments/assets/a3db90a1-7622-420f-a687-2e355da15edc)
+
+Una compuerta Mux16 funciona como un multiplexor de 16 bits. Este chip tiene dos conjuntos de entradas de 16 bits, a[16] y b[16], más una señal de selección sel. Dependiendo del valor de sel, el chip selecciona y emite uno de los dos conjuntos de entrada en la salida out[16]. 
+
+```
+CHIP Mux16 {
+    IN a[16], b[16], sel;
+    OUT out[16];
+
+    PARTS:
+    Mux(a=a[0] , b=b[0] , sel=sel , out=out[0] );
+    Mux(a=a[1] , b=b[1] , sel=sel ,out=out[1] );
+    Mux(a=a[2] , b=b[2] , sel=sel ,out=out[2] );
+    Mux(a=a[3] , b=b[3] , sel=sel ,out=out[3] );
+    Mux(a=a[4] , b=b[4] , sel=sel ,out=out[4] );
+    Mux(a=a[5] , b=b[5] , sel=sel ,out=out[5] );
+    Mux(a=a[6] , b=b[6] , sel=sel ,out=out[6] );
+    Mux(a=a[7] , b=b[7] , sel=sel ,out=out[7] );
+    Mux(a=a[8] , b=b[8] , sel=sel ,out=out[8] );
+    Mux(a=a[9] , b=b[9] , sel=sel ,out=out[9] );
+    Mux(a=a[10] , b=b[10] , sel=sel ,out=out[10] );
+    Mux(a=a[11] , b=b[11] , sel=sel ,out=out[11] );
+    Mux(a=a[12] , b=b[12] , sel=sel ,out=out[12] );
+    Mux(a=a[13] , b=b[13] , sel=sel ,out=out[13] );
+    Mux(a=a[14] , b=b[14] , sel=sel ,out=out[14] );
+    Mux(a=a[15] , b=b[15] , sel=sel ,out=out[15] );
+}
+```
+
+
+### OR8WAY
+
+Este chip toma 8 entradas (in[0] a in[7]) y proporciona una salida (out). El funcionamiento del chip es realizar una operación lógica OR entre todas las entradas y devolver el resultado en out.
+
+![OR8WAY](https://github.com/user-attachments/assets/f40f0321-fbe5-4e30-b5d9-584d652a19de)
+
+```
+CHIP Or8Way {
+    IN in[8];
+    OUT out;
+
+    PARTS:
+    Or(a=in[0] , b=in[1] , out=o1 );
+    Or(a=o1 , b=in[2] , out=o2 );
+    Or(a=o2 , b=in[3] , out=o3 );
+    Or(a=o3 , b=in[4] , out=o4 );
+    Or(a=o4 , b=in[5] , out=o5 );
+    Or(a=o5 , b=in[6] , out=o6 );
+    Or(a=o6 , b=in[7] , out=out );
+}
+```
+
 ### MUX4WAY16
 
 Esta compuerta es un multiplexor que selecciona una de las cuatro entradas para cada cuarteto de bits , realizando el proceso para cada uno de los 16 cuartetos de bits para los 4 buses de entrada a,b,c y d.La selección se realiza mediante los 2 bits de selección bajo la siguiendo la siguiente lógica : <br>
