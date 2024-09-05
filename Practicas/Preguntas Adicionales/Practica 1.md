@@ -1,4 +1,4 @@
-# Respuestas - preguntas adicionales 
+# Respuestas - preguntas adicionales (Practica 1)
 
 ### 1. Consideraciones para el Proyecto Nand2Tetris
 
