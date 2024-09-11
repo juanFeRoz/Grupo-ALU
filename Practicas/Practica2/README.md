@@ -45,6 +45,24 @@ El Sumador completo , al igual que el medio , se implementó en base a las compu
 ## Sumador de 16 bits (*16-bit adder*)
 El sumador de 16 bits realiza la suma de dos números (bus) de 16 bits cada uno , A y B , realizando la suma bit a bit empezando por el bit menos significativo (LSB) hasta el bit más significativo (MSB) , llevando el acarreo de la suma anterior , por lo cual la implementación es el uso del *Full Adder* anterior visto donde las entradas del mismo son cada bit de izquierda a derecha  y el accarreo ($C_in$) es el acarreo de la suma anterior.<br>
 
+## ALU (*Arithmetic Logic Unit* : *HACK*)
+La ALU toma varios bits de control como entrada para determinar qué operación realizar. Estos bits de control son:
+
+
+- $zx$: Si se establece en 1, se establece $x$ en cero.
+- $nx$: Si se establece en 1, se realiza una operación de negación en $x$.
+- $zy$: Si se establece en 1, se establece y en cero.
+- $ny$: Si se establece en 1, se realiza una operación de negación en $y$.
+- $f$: Si se establece en 1, se realiza una suma de complemento a 2 $(x + y)$, de lo contrario, se realiza una operación AND $(x \land y)$.
+- $no$: Si se establece en 1, se realiza una operación de negación en el resultado.
+
+La ALU tiene tres salidas principales:
+- $out$: El resultado de la operación realizada en $x$ e $y$. Es un número de 16 bits.
+- $zr$: Si out es igual a cero, $zr$ se establece en 1; de lo contrario, se establece en 0.
+- $ng$: Si out es negativo (el bit más significativo es 1), $ng$ se establece en 1; de lo contrario, se establece en 0.
+<br>La implementación de la ALU se realiza mediante la manipulación de las entradas $x$ e $y$ y operando en los valores resultantes. Por ejemplo, si $zx$ es 1, $x$ se establece en cero. Si nx es 1, se realiza una operación de negación en $x$. Lo mismo se aplica a las entradas y con $zy$ y $ny$.
+
+Luego, se realiza la operación seleccionada ($f$) en los valores manipulados de $x$ e $y$. Si f es 1, se realiza una suma de complemento a 2 $(x + y)$; de lo contrario, se realiza una operación AND $(x \land y)$
 
 # Proyecto 3: Memorias
 
