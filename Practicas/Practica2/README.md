@@ -13,7 +13,7 @@ En las implementaciones de la suma binaria se contaron con tres de estas , que e
 
 ## Sumador Medio(*Half Adder*)
 El primer paso para la construcción de un sumador completo es la construcción de un sumador medio. El sumador medio es aquel que realiza la suma de dos bits y genera un bit de suma y un bit de acarreo. La tabla de verdad del sumador medio es la siguiente:<br>
-| A | B | Suma | Acarreo |
+| A | B | Suma($\sum$) | Acarreo($C_{out}$) |
 |---|---|------|---------|
 | 0 | 0 | 0    | 0       |
 | 0 | 1 | 1    | 0       |
@@ -21,7 +21,29 @@ El primer paso para la construcción de un sumador completo es la construcción 
 | 1 | 1 | 0    | 1       |
 
 Donde A y B son los bits de entrada, Suma es el bit de salida y Acarreo es el bit de acarreo. La implementación del sumador medio se realizó en base a las compuertas lógicas *AND*, *OR* y *XOR*.<br>
-<img src="https://github.com/user-attachments/assets/0d14e99e-81e0-478f-ac05-4aa0a85f9f13" width="300" height="250" text-align="center"/>
-Por lo cual la salida *Suma* se puede interpretrar como *A XOR B* y la salida *Acarreo* como *A AND B*.<br>
+<img src="https://github.com/user-attachments/assets/0d14e99e-81e0-478f-ac05-4aa0a85f9f13" width="420" height="250" text-align="center"/>
+<br>
+Por lo cual la salida *Suma* se puede interpretrar como *A XOR B* y la salida *Acarreo* como *A AND B*.Lo anterior tal cual se realizó en la implementación del chip en HDL.<br>
+
+## Sumador Completo(*Full Adder*)
+El sumador completo es aquel que realiza la suma de tres bits y genera un bit de suma y un bit de acarreo,el Sumador completo se puede ver como el uso de 2 *Half Adders* : $A+B$ y luego $(A+B)+C_{in}$ , manejando los accarreos de la suma anterior. La tabla de verdad del sumador completo es la siguiente:<br>
+| A | B | $C_{in}$ | Suma($\sum$) | Acarreo($C_{out}$) |
+|---|---|----------|------|---------|
+| 0 | 0 | 0        | 0    | 0       |
+| 0 | 0 | 1        | 1    | 0       |
+| 0 | 1 | 0        | 1    | 0       |
+| 0 | 1 | 1        | 0    | 1       |
+| 1 | 0 | 0        | 1    | 0       |
+| 1 | 0 | 1        | 0    | 1       |
+| 1 | 1 | 0        | 0    | 1       |
+| 1 | 1 | 1        | 1    | 1       |
+El Sumador completo , al igual que el medio , se implementó en base a las compuertas lógicas *AND*, *OR* y *XOR* como muestra la siguiente imagen :<br>
+
 
 # Proyecto 3: Memorias
+
+# Referencias
+<ul>
+<li>Nisan, N., & Schocken, S. (2021). The elements of computing systems: building a modern computer from first principles. MIT press
+<li>Floyd, T. (2015). Digital Fundamentals/Floyd T.
+<ul>
