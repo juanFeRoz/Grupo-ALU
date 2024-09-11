@@ -40,6 +40,7 @@ El sumador completo es aquel que realiza la suma de tres bits y genera un bit de
 <br>
 
 El Sumador completo , al igual que el medio , se implementó en base a las compuertas lógicas *AND*, *OR* y *XOR* como muestra la siguiente imagen :<br>
+<img src="https://github.com/user-attachments/assets/d0bbc8f3-abe8-47c3-a307-33b44718ed3e" width="420" height="250" text-align="center"/>
 
 
 # Proyecto 3: Memorias
