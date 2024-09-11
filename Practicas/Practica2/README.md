@@ -6,7 +6,8 @@ Para la implementación de *HACK*, se emplearon 3 elementos principales: multipl
 Todo en las computadoras se representa mediante el sistema de numeración binario , por lo cual , las computadoras deben encargarse de realizar conversiones decimal-binario y viceversa.Lo anterior es de suma importancia, ya que , realmente las adiciones que realiza *HACK* y demas operaciones lógicas se hacen mediante el uso del sistema binario.<br>
 Afortunadamente la suma binaria se realiza bit a bit tal cual como se puede realizar la suma decimal empezando por el par de bit mas a la derecha (LSB) , finalizando con los mas posicionados a la izquierda (MSB) llevando el respectivo accarreo para cada operación.Si la suma bit a bit más significativa genera un acarreo de 1, tenemos lo que se conoce como desbordamiento (*Overflow*). Qué hacer con el desbordamiento es una cuestión de decisión, y para el interes con *HACK* se ignora.<br>
 A continuación se muestra un ejemplo de suma binaria:<br>
-![imagen](https://github.com/user-attachments/assets/a674037d-b3e9-49c5-9975-517dd1e9983d)
+
+<img src="https://github.com/user-attachments/assets/a674037d-b3e9-49c5-9975-517dd1e9983d" width="200" height="150" />
 <br>
 
 
