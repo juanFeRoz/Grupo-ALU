@@ -40,6 +40,7 @@ El sumador completo es aquel que realiza la suma de tres bits y genera un bit de
 <br>
 
 El Sumador completo , al igual que el medio , se implementó en base a las compuertas lógicas *AND*, *OR* y *XOR* como muestra la siguiente imagen :<br>
+<img src="https://github.com/user-attachments/assets/d0bbc8f3-abe8-47c3-a307-33b44718ed3e" width="420" height="250" text-align="center"/>
 
 ## Sumador de 16 bits (*16-bit adder*)
 El sumador de 16 bits realiza la suma de dos números (bus) de 16 bits cada uno , A y B , realizando la suma bit a bit empezando por el bit menos significativo (LSB) hasta el bit más significativo (MSB) , llevando el acarreo de la suma anterior , por lo cual la implementación es el uso del *Full Adder* anterior visto donde las entradas del mismo son cada bit de izquierda a derecha  y el accarreo ($C_in$) es el acarreo de la suma anterior.<br>
