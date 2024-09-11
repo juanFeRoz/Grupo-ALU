@@ -21,6 +21,7 @@ El primer paso para la construcción de un sumador completo es la construcción 
 | 1 | 1 | 0    | 1       |
 
 Donde A y B son los bits de entrada, Suma es el bit de salida y Acarreo es el bit de acarreo. La implementación del sumador medio se realizó en base a las compuertas lógicas *AND*, *OR* y *XOR*.<br>
+<img src="https://github.com/user-attachments/assets/0d14e99e-81e0-478f-ac05-4aa0a85f9f13" width="300" height="250" text-align="center"/>
 Por lo cual la salida *Suma* se puede interpretrar como *A XOR B* y la salida *Acarreo* como *A AND B*.<br>
 
 # Proyecto 3: Memorias
