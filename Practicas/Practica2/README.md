@@ -38,6 +38,7 @@ El sumador completo es aquel que realiza la suma de tres bits y genera un bit de
 | 1 | 1 | 0        | 0    | 1       |
 | 1 | 1 | 1        | 1    | 1       |
 <br>
+
 El Sumador completo , al igual que el medio , se implementó en base a las compuertas lógicas *AND*, *OR* y *XOR* como muestra la siguiente imagen :<br>
 
 
