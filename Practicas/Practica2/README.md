@@ -7,9 +7,10 @@ Todo en las computadoras se representa mediante el sistema de numeración binari
 Afortunadamente la suma binaria se realiza bit a bit tal cual como se puede realizar la suma decimal empezando por el par de bit mas a la derecha (LSB) , finalizando con los mas posicionados a la izquierda (MSB) llevando el respectivo accarreo para cada operación.Si la suma bit a bit más significativa genera un acarreo de 1, tenemos lo que se conoce como desbordamiento (*Overflow*). Qué hacer con el desbordamiento es una cuestión de decisión, y para el interes con *HACK* se ignora.<br>
 A continuación se muestra un ejemplo de suma binaria:<br>
 
-<img src="https://github.com/user-attachments/assets/a674037d-b3e9-49c5-9975-517dd1e9983d" width="200" height="150" />
+<img src="https://github.com/user-attachments/assets/a674037d-b3e9-49c5-9975-517dd1e9983d" width="200" height="150" text-align="center"/>
 <br>
+En las implementaciones de la suma binaria se contaron con tres de estas , que en general una herada de la otra , siendo estas el sumador medio, el sumador completo y el sumador (permite sumar números de n-bits).<br>
 
+## Sumador Medio(*Half Adder*)
 
-
-# Proyecto 3: Memoria
+# Proyecto 3: Memorias
