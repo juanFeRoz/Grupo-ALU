@@ -46,6 +46,10 @@ El Sumador completo , al igual que el medio , se implementó en base a las compu
 El sumador de 16 bits realiza la suma de dos números (bus) de 16 bits cada uno , A y B , realizando la suma bit a bit empezando por el bit menos significativo (LSB) hasta el bit más significativo (MSB) , llevando el acarreo de la suma anterior , por lo cual la implementación es el uso del *Full Adder* anterior visto donde las entradas del mismo son cada bit de izquierda a derecha  y el accarreo ($C_{in}$) es el acarreo de la suma anterior.<br>
 <img src="https://github.com/user-attachments/assets/765ccbb7-6280-4418-b226-0afce7477293" width="400" height="240" text-align="center"/>
 
+## Incrementador (*Inc 16*)
+<img src="https://github.com/user-attachments/assets/757c3d08-6725-46bb-b4ca-78a3a7dde6c5" width="200" height="200" text-align="center"/>
+
+
 
 ## ALU (*Arithmetic Logic Unit* : *HACK*)
 La ALU toma varios bits de control como entrada para determinar qué operación realizar. Estos bits de control son:
