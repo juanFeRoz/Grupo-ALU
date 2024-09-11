@@ -52,7 +52,7 @@ El sumador de 16 bits realiza la suma de dos números (bus) de 16 bits cada uno 
 
 
 ## ALU (*Arithmetic Logic Unit* : *HACK*)
-<img src="https://github.com/user-attachments/assets/5bec398f-b75a-4bf7-9843-d90dd0e5569c" width="300" height="300" text-align="center"/>
+<img src="https://github.com/user-attachments/assets/5bec398f-b75a-4bf7-9843-d90dd0e5569c" width="350" height="300" text-align="center"/>
 
 La ALU toma varios bits de control como entrada para determinar qué operación realizar. Estos bits de control son:
 
