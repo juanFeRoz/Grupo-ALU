@@ -12,5 +12,15 @@ A continuación se muestra un ejemplo de suma binaria:<br>
 En las implementaciones de la suma binaria se contaron con tres de estas , que en general una herada de la otra , siendo estas el sumador medio, el sumador completo y el sumador (permite sumar números de n-bits).<br>
 
 ## Sumador Medio(*Half Adder*)
+El primer paso para la construcción de un sumador completo es la construcción de un sumador medio. El sumador medio es aquel que realiza la suma de dos bits y genera un bit de suma y un bit de acarreo. La tabla de verdad del sumador medio es la siguiente:<br>
+| A | B | Suma | Acarreo |
+|---|---|------|---------|
+| 0 | 0 | 0    | 0       |
+| 0 | 1 | 1    | 0       |
+| 1 | 0 | 1    | 0       |
+| 1 | 1 | 0    | 1       |
+
+Donde A y B son los bits de entrada, Suma es el bit de salida y Acarreo es el bit de acarreo. La implementación del sumador medio se realizó en base a las compuertas lógicas *AND*, *OR* y *XOR*.<br>
+Por lo cual la salida *Suma* se puede interpretrar como *A XOR B* y la salida *Acarreo* como *A AND B*.<br>
 
 # Proyecto 3: Memorias
