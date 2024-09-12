@@ -235,7 +235,7 @@ Para lograrlo, la dirección de 9 bits se divide en dos secciones. Los tres bits
 
 Cada uno de los ocho chips RAM64 maneja 64 registros de 16 bits, y el multiplexor Mux8Way16 se encarga de seleccionar la salida correcta entre los ocho RAM64 según los bits superiores de la dirección. Este diseño permite que el chip RAM512 almacene una gran cantidad de datos de manera eficiente y acceda rápidamente a cualquier registro, expandiendo la capacidad de memoria en un sistema computacional.
 
-Imagen :)
+![Ram512](https://github.com/user-attachments/assets/c6e12a96-d8b1-42b8-908a-16953b409977)
 
 ## RAM4K
 
@@ -269,7 +269,7 @@ Para lograrlo, se utiliza una dirección de 12 bits, que se divide en dos partes
 
 Cada chip RAM512 contiene 512 registros de 16 bits, y el multiplexor Mux8Way16 selecciona la salida correcta de entre los ocho RAM512 basándose en los tres bits superiores de la dirección. Este diseño permite manejar grandes volúmenes de datos de manera eficiente y estructurada, asegurando un acceso rápido y organizado dentro de los 4096 registros totales.
 
-Imagen :)
+![Ram4k](https://github.com/user-attachments/assets/5d4c9522-18c4-4960-b5b8-b96899fca6c1)
 
 ## RAM16K
 
