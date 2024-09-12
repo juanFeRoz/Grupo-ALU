@@ -11,6 +11,4 @@
 
 ### Referencias
 
-<ul>
-  <li>https://es.slideshare.net/slideshow/unidad-aritmtica-lgica-alu-250586922/250586922</li>
-</ul>
+[Unidad aritmética lógica (ALU)](https://es.slideshare.net/slideshow/unidad-aritmtica-lgica-alu-250586922/250586922)
