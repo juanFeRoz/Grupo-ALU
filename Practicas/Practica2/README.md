@@ -47,11 +47,12 @@ El sumador de 16 bits realiza la suma de dos números (bus) de 16 bits cada uno 
 <img src="https://github.com/user-attachments/assets/765ccbb7-6280-4418-b226-0afce7477293" width="400" height="240" text-align="center"/>
 
 ## Incrementador (*Inc 16*)
+El incrementador básicamente es un sumador de 16 bits que suma 1 al número de entrada , por lo cual la implementación es la misma que la del sumador de 16 bits , pero con la entrada B fija en 1.<br>
 <img src="https://github.com/user-attachments/assets/757c3d08-6725-46bb-b4ca-78a3a7dde6c5" width="200" height="200" text-align="center"/>
 
 
-
 ## ALU (*Arithmetic Logic Unit* : *HACK*)
+La AlU que si diseña para este proyecto llamada *HACK* , recibe 2 entradas $x$ e $y$ de 16 bits cada una y 6 entradas de control de 1 bit cada una , que determinan la operación a realizar. Las operaciones que puede realizar *HACK* son las siguientes:<br>
 <img src="https://github.com/user-attachments/assets/5bec398f-b75a-4bf7-9843-d90dd0e5569c" width="350" height="300" text-align="center"/>
 
 La ALU toma varios bits de control como entrada para determinar qué operación realizar. Estos bits de control son:
@@ -63,14 +64,15 @@ La ALU toma varios bits de control como entrada para determinar qué operación 
 - $ny$: Si se establece en 1, se realiza una operación de negación en $y$.
 - $f$: Si se establece en 1, se realiza una suma de complemento a 2 $(x + y)$, de lo contrario, se realiza una operación AND $(x \land y)$.
 - $no$: Si se establece en 1, se realiza una operación de negación en el resultado.
-
-La ALU tiene tres salidas principales:
+Cabe destacar que *HACK* tiene otros 2 bits de salida que controlan si la salida de la operación es negativa *ng* o si es cero *zr*.<br>
+Entonces la ALU tiene tres salidas principales:
 - $out$: El resultado de la operación realizada en $x$ e $y$. Es un número de 16 bits.
 - $zr$: Si out es igual a cero, $zr$ se establece en 1; de lo contrario, se establece en 0.
 - $ng$: Si out es negativo (el bit más significativo es 1), $ng$ se establece en 1; de lo contrario, se establece en 0.
 <br>La implementación de la ALU se realiza mediante la manipulación de las entradas $x$ e $y$ y operando en los valores resultantes. Por ejemplo, si $zx$ es 1, $x$ se establece en cero. Si nx es 1, se realiza una operación de negación en $x$. Lo mismo se aplica a las entradas y con $zy$ y $ny$.
 
-Luego, se realiza la operación seleccionada ($f$) en los valores manipulados de $x$ e $y$. Si f es 1, se realiza una suma de complemento a 2 $(x + y)$; de lo contrario, se realiza una operación AND $(x \land y)$
+Luego, se realiza la operación seleccionada ($f$) en los valores manipulados de $x$ e $y$. Si f es 1, se realiza una suma de complemento a 2 $(x + y)$; de lo contrario, se realiza una operación AND $(x \land y)$.<br>
+
 
 # Proyecto 3: Memorias
 En el Proyecto 3 se aborda uno de los pilares fundamentales de la arquitectura de computadoras: la memoria principal, conocida comúnmente como Memoria de Acceso Aleatorio (RAM). Este proyecto desglosa el desafío de cómo almacenar y recuperar datos de manera eficiente y rápida, utilizando registros direccionables de n bits. A lo largo de este proyecto, exploraran la construcción de una unidad RAM completa, comenzando con el diseño de un simple Flip-Flop de Datos (DFF), seguido de chips más complejos como registros individuales y múltiples configuraciones de RAM que varían en capacidad desde 8 registros hasta 16384 registros. El enfoque se centrará en el uso exclusivo de puertas DFF y otros chips fundamentales que se estudiaron en los proyectos anteriores, demostrando la aplicabilidad de la lógica de puertas para solucionar problemas de almacenamiento persistente y direccionamiento efectivo.
