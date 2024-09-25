@@ -1,5 +1,5 @@
 # Proyecto 4 : Lenguaje de Maquina 
-<img src="https://limeup.io/wp-content/uploads/2024/02/Assembly-Language.png" width="200" height="150" text-align="center"/>
+<img src="https://limeup.io/wp-content/uploads/2024/02/Assembly-Language.png" width="200" height="150"/>
 # Proyecto 5 : Arquitectura de Computadoras
 En los proyectos anteriores del curso Nand2Tetris, hemos desarrollado los componentes esenciales que forman parte de la arquitectura de una computadora, tales como la ALU (Unidad Aritmético-Lógica) y la RAM (Memoria de Acceso Aleatorio). Estos bloques básicos son cruciales para ejecutar operaciones lógicas y aritméticas, además de proporcionar el almacenamiento temporal necesario durante la ejecución de programas. En este quinto proyecto, integramos todos estos módulos en una plataforma unificada conocida como la Hack Hardware Platform. Este proceso culmina con la creación de una computadora completamente funcional, capaz de ejecutar programas escritos en lenguaje de máquina Hack.
 
