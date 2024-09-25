@@ -4,9 +4,11 @@ Descripción de la práctica 😁
 En los proyectos anteriores del curso Nand2Tetris, hemos construido los bloques fundamentales de la arquitectura de una computadora, incluyendo la ALU (Unidad Aritmético-Lógica) y la RAM (Memoria de Acceso Aleatorio). Estos dispositivos permiten realizar operaciones lógicas, aritméticas, y almacenar datos, elementos esenciales para el funcionamiento de cualquier sistema de cómputo. En este Proyecto 5, vamos a ensamblar todos estos componentes, integrándolos en una plataforma completa: la Hack Hardware Platform. Este proyecto culmina con la creación de una computadora funcional que puede ejecutar programas en lenguaje de máquina Hack.
 El objetivo de este proyecto es completar la construcción de la CPU Hack y su plataforma de hardware. Esto implica diseñar y conectar todos los componentes principales, como la CPU, la memoria y la ROM, lo que llevará a la creación del chip de computadora de mayor nivel: el chip de la computadora Hack. A lo largo del proyecto, aprenderemos cómo los distintos elementos de hardware interactúan entre sí para procesar instrucciones y gestionar el flujo de datos en un sistema de propósito general.
 
-Memory
+## Memory
 Este código define la implementación de la memoria de la computadora Hack, incluyendo la RAM y las áreas de memoria mapeadas para el manejo de la pantalla y el teclado. La memoria es responsable de almacenar y recuperar datos durante la ejecución de un programa. Se utilizan componentes como multiplexores (Mux16) y demultiplexores (DMux) para seleccionar entre diferentes áreas de memoria dependiendo de la dirección suministrada.
+
 *Imagen*
+
 El siguiente bloque de código muestra cómo se organiza la memoria en función de las direcciones, cargando la RAM o los mapas de memoria de pantalla y teclado según corresponda:
 ```
 CHIP Memory {
@@ -32,9 +34,12 @@ CHIP Memory {
 ```
 
 El código utiliza la lógica de selección de direcciones para acceder a la RAM, la pantalla o el teclado según los bits superiores de la dirección. Esto permite que el hardware administre de manera eficiente los distintos recursos de la computadora, facilitando la interacción con el hardware externo. El diseño de la memoria en este código permite la correcta integración de la RAM y las áreas mapeadas de entrada/salida de la pantalla y teclado, formando una parte esencial del sistema de almacenamiento de la computadora Hack. La memoria no solo actúa como un área de almacenamiento de datos temporales, sino que también facilita la interacción con dispositivos externos.
-Computer
+
+##Computer
 El archivo Computer.hdl define el ensamblaje completo de la computadora Hack, que incluye la CPU, la memoria y la ROM. Este chip es el componente más alto de la jerarquía, combinando todos los módulos para ejecutar programas escritos en lenguaje de máquina Hack. La CPU procesa las instrucciones almacenadas en la ROM y se comunica con la memoria para realizar las operaciones necesarias.
+
 *Imagen*
+
 El siguiente bloque de código muestra cómo se conectan estos componentes en la computadora Hack:
 ```
 CHIP Computer {
@@ -50,9 +55,11 @@ CHIP Computer {
 
 En este diseño, la CPU lee las instrucciones desde la ROM, las ejecuta y escribe o lee datos en la memoria según sea necesario. El reset reinicia la ejecución del programa, lo que es útil para comenzar un nuevo ciclo de ejecución. El código Computer.hdl representa la construcción final de la computadora Hack, conectando todos los componentes principales. Este diseño asegura que la computadora Hack pueda ejecutar cualquier programa de máquina que siga las especificaciones del lenguaje Hack, demostrando cómo interactúan la CPU, la memoria y la ROM en una arquitectura simple pero funcional.
 
-CPU
+## CPU
 El archivo CPU.hdl define el núcleo del sistema: la CPU (Unidad Central de Procesamiento), que contiene dos registros, A y D, una ALU (Unidad Aritmético-Lógica) y el PC (contador de programa). La CPU ejecuta las instrucciones del programa, controla el flujo de datos entre la memoria y los registros, y toma decisiones lógicas y aritméticas a través de la ALU.
+
 *Imagen*
+
 A continuación se muestra un fragmento del código que ilustra cómo se organiza la CPU para procesar las instrucciones y gestionar los registros:
 ```
 CHIP CPU {
