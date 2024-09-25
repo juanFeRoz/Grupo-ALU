@@ -8,7 +8,7 @@ El propósito de este proyecto es completar el diseño de la CPU Hack y su plata
 ## Memory
 Este código define la implementación de la memoria de la computadora Hack, incluyendo la RAM y las áreas de memoria mapeadas para el manejo de la pantalla y el teclado. La memoria es responsable de almacenar y recuperar datos durante la ejecución de un programa. Se utilizan componentes como multiplexores (Mux16) y demultiplexores (DMux) para seleccionar entre diferentes áreas de memoria dependiendo de la dirección suministrada.
 
-*Imagen*
+img src="https://www.bencode.net/images/nand2tetris-mmio.png" width="200" height="150"
 
 El siguiente bloque de código muestra cómo se organiza la memoria en función de las direcciones, cargando la RAM o los mapas de memoria de pantalla y teclado según corresponda:
 ```
