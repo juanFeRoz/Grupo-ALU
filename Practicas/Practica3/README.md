@@ -19,20 +19,23 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-    DMux(in=load, sel=address[14], a=ramLoad, b=ioLoad);
-    DMux(in=ioLoad, sel=address[13], a=screenLoad, b=keyboardLoad);
+    // Demultiplexa la señal de carga entre las diferentes memorias según las líneas de dirección más altas
+    DMux4Way(in=load, sel=address[13..14], a=loadToRAM1, b=loadToRAM2, c=loadToScreen, d=loadToKeyboard);
+    
+    // Combinamos las señales para cargar en la RAM de 16K si alguna de las primeras dos opciones es seleccionada
+    Or(a=loadToRAM1, b=loadToRAM2, out=loadToRAM);
 
-    RAM16K(in=in, load=ramLoad, address=address[0..13], out=ramOut);
-    Screen(in=in, load=screenLoad, address=address[0..12], out=screenOut);
+    // RAM de 16K respondiendo a las primeras 14 líneas de dirección
+    RAM16K(in=in, load=loadToRAM, address=address[0..13], out=outputFromRAM);
 
-    Keyboard(out=keyboardOut);
-    Or8Way(in=address[0..7], out=nonKeyboardAddressPart1);
-    Or8Way(in[0..4]=address[8..12], in[5..7]=false, out=nonKeyboardAddressPart2);
-    Or(a=nonKeyboardAddressPart1, b=nonKeyboardAddressPart2, out=nonKeyboardAddress);
-    Mux16(a=keyboardOut, b=false, sel=nonKeyboardAddress, out=keyboardMuxOut);
+    // La pantalla usa menos líneas de dirección y tiene su propia señal de carga
+    Screen(in=in, load=loadToScreen, address=address[0..12], out=outputFromScreen);
 
-    Mux16(a=ramOut, b=ioOut, sel=address[14], out=out);
-    Mux16(a=screenOut, b=keyboardMuxOut, sel=address[13], out=ioOut);
+    // El teclado no tiene líneas de entrada o de carga, simplemente proporciona su estado actual
+    Keyboard(out=outputFromKeyboard);
+
+    // Selecciona la salida correcta basada en las líneas de dirección altas
+    Mux4Way16(a=outputFromRAM, b=outputFromRAM, c=outputFromScreen, d=outputFromKeyboard, sel=address[13..14], out=out);
 }
 ```
 
