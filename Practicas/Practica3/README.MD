@@ -1,8 +1,9 @@
 # Proyecto 4 : Lenguaje de Maquina 
 Descripción de la práctica 😁
 # Proyecto 5 : Arquitectura de Computadoras
-En los proyectos anteriores del curso Nand2Tetris, hemos construido los bloques fundamentales de la arquitectura de una computadora, incluyendo la ALU (Unidad Aritmético-Lógica) y la RAM (Memoria de Acceso Aleatorio). Estos dispositivos permiten realizar operaciones lógicas, aritméticas, y almacenar datos, elementos esenciales para el funcionamiento de cualquier sistema de cómputo. En este Proyecto 5, vamos a ensamblar todos estos componentes, integrándolos en una plataforma completa: la Hack Hardware Platform. Este proyecto culmina con la creación de una computadora funcional que puede ejecutar programas en lenguaje de máquina Hack.
-El objetivo de este proyecto es completar la construcción de la CPU Hack y su plataforma de hardware. Esto implica diseñar y conectar todos los componentes principales, como la CPU, la memoria y la ROM, lo que llevará a la creación del chip de computadora de mayor nivel: el chip de la computadora Hack. A lo largo del proyecto, aprenderemos cómo los distintos elementos de hardware interactúan entre sí para procesar instrucciones y gestionar el flujo de datos en un sistema de propósito general.
+En los proyectos anteriores del curso Nand2Tetris, hemos desarrollado los componentes esenciales que forman parte de la arquitectura de una computadora, tales como la ALU (Unidad Aritmético-Lógica) y la RAM (Memoria de Acceso Aleatorio). Estos bloques básicos son cruciales para ejecutar operaciones lógicas y aritméticas, además de proporcionar el almacenamiento temporal necesario durante la ejecución de programas. En este quinto proyecto, integramos todos estos módulos en una plataforma unificada conocida como la Hack Hardware Platform. Este proceso culmina con la creación de una computadora completamente funcional, capaz de ejecutar programas escritos en lenguaje de máquina Hack.
+
+El propósito de este proyecto es completar el diseño de la CPU Hack y su plataforma de hardware. Esto requiere la interconexión de componentes clave, como la CPU, la memoria y la ROM, resultando en la creación del chip que forma el corazón de la computadora Hack. A lo largo del proyecto, veremos cómo estos componentes trabajan juntos para procesar instrucciones y manejar el flujo de datos, permitiendo que el sistema funcione de manera óptima y eficiente.
 
 ## Memory
 Este código define la implementación de la memoria de la computadora Hack, incluyendo la RAM y las áreas de memoria mapeadas para el manejo de la pantalla y el teclado. La memoria es responsable de almacenar y recuperar datos durante la ejecución de un programa. Se utilizan componentes como multiplexores (Mux16) y demultiplexores (DMux) para seleccionar entre diferentes áreas de memoria dependiendo de la dirección suministrada.
@@ -35,7 +36,7 @@ CHIP Memory {
 
 El código utiliza la lógica de selección de direcciones para acceder a la RAM, la pantalla o el teclado según los bits superiores de la dirección. Esto permite que el hardware administre de manera eficiente los distintos recursos de la computadora, facilitando la interacción con el hardware externo. El diseño de la memoria en este código permite la correcta integración de la RAM y las áreas mapeadas de entrada/salida de la pantalla y teclado, formando una parte esencial del sistema de almacenamiento de la computadora Hack. La memoria no solo actúa como un área de almacenamiento de datos temporales, sino que también facilita la interacción con dispositivos externos.
 
-##Computer
+## Computer
 El archivo Computer.hdl define el ensamblaje completo de la computadora Hack, que incluye la CPU, la memoria y la ROM. Este chip es el componente más alto de la jerarquía, combinando todos los módulos para ejecutar programas escritos en lenguaje de máquina Hack. La CPU procesa las instrucciones almacenadas en la ROM y se comunica con la memoria para realizar las operaciones necesarias.
 
 *Imagen*
