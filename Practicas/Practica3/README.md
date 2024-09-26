@@ -1,6 +1,55 @@
 # Proyecto 4 : Lenguaje de Maquina 
 En este momento del proyecto , se han abordado la construcción de chips para memoria y procesamiento , antes de pasar a la construcción o ensamblaje de la arquitectura de HACK , se hace necesario abordar el lenguaje de maquina , ya que una computadora de proposito general debe ser capaz de ejecutar cualquier programa escrito en lenguaje de maquina.Un lenguaje de máquina es un formalismo acordado diseñado para codificar instrucciones de la máquina. Usando estas instrucciones, podemos instruir al procesador de la computadora para realizar operaciones aritméticas y lógicas, leer y escribir valores desde y hacia la memoria de la computadora, probar condiciones booleanas, y decidir qué instrucción buscar y ejecutar a continuación. Tambien se destaca que con el lenguaje de maquina tenemos algo denominado *lenguaje de bajo nivel* por lo cual estamos interactuando directamente (o de cierta manera) con el hardware de la computadora.<br>
-El lenguaje de maquina en principio solo era posible escribirse de manera binaria , siendo algo muy complejo ya que se debian representar instrucciones mediante ciertos numeros binarios , por lo cual se desarrollo una manera simbólica de escribir lenguaje de maquina , a este nuevo lenguaje se le denomino *lenguaje ensamblador* ademas de ser mas facil de escribir y leer permitiendo tener contacto con la ALU , memorias y registros de manera mas sencilla, tambien es mas facil de traducir a lenguaje de maquina usando una pieza de software llamada *ensamblador*.<br>
+El lenguaje de maquina en principio solo era posible escribirse de manera binaria , siendo algo muy complejo ya que se debian representar instrucciones mediante ciertos numeros binarios , por lo cual se desarrollo una manera simbólica de escribir lenguaje de maquina , a este nuevo lenguaje se le denomino *lenguaje ensamblador* ademas de ser mas facil de escribir y leer permitiendo tener contacto con la ALU , memorias y registros de manera mas sencilla, tambien es mas facil de traducir a lenguaje de maquina usando una pieza de software llamada *ensamblador*.<br>Algo a destacar sobre el lenguaje ensamblador es que al estar muy ligado a los detalles de bajo nivel del hardware,no existe un unico consenso sobre la sintaxis del lenguaje ensamblador.Específicamente el vinculo entre la arquitectura del computador y el lenguaje ensamblador es intrínseco ya que cada procesador o familia de procesadores tiene su propio conjunto de instrucciones (*ISA*) por lo cual el lenguaje ensamblador debe adecuarse a este Los procesadores diferentes, como x86, ARM, MIPS, o el procesador Hack (en el proyecto Nand2Tetris), tienen conjuntos de instrucciones distintos.Los procesadores diferentes, como x86, ARM, MIPS, o el procesador de Hack (en el proyecto Nand2Tetris), tienen conjuntos de instrucciones distintos,entonces el *ISA* define las operaciones que un procesador puede realizar, como mover datos entre registros, sumar, multiplicar, o hacer saltos condicionales. Por ejemplo, en x86 hay instrucciones como MOV, ADD, y JMP, mientras que en un procesador ARM, las instrucciones son diferentes aunque puedan cumplir funciones similares.<br>
+A continuación se presentara un breve resumen sobre el lenguaje ensamblador y su implementación en el proyecto Nand2Tetris:<br>
+
+1. Arquitectura de HACK
+
+    El procesador Hack es una CPU simplificada con tres registros principales:
+    - A: Registro de direcciones (también utilizado para datos en ciertas ocasiones).
+    - D: Registro de datos.
+    - M: Valor en la dirección de memoria apuntada por el registro A.
+
+    La memoria tiene 32K palabras, con un mapeo de memoria donde se representan tanto los datos como los componentes de entrada/salida, como el teclado y la pantalla.
+
+Las instrucciones de Hack se dividen en dos categorías: A-instructions y C-instructions.
+
+2. A-Instructions
+    Las A-instructions establecen el valor del registro A con un número o una etiqueta que apunta a una dirección de memoria.
+    Sintaxis: @value
+    - @number: Carga el valor numérico en el registro A.
+    - @label: Apunta a una etiqueta que corresponde a una dirección de memoria.
+
+    Ejemplo: @17 asigna el valor 17 al registro A.
+
+Efectos:
+    Se selecciona la dirección de memoria para futuras operaciones (cuando se usa M).
+    Se puede utilizar en operaciones de salto (cuando se usa con instrucciones condicionales).
+
+3. C-Instructions
+    Las C-instructions son más complejas y están destinadas a operaciones de la ALU (Unidad Aritmético-Lógica), movimientos de datos entre registros y saltos condicionales.
+    La sintaxis de una C-instruction sigue el formato: dest = comp ; jump.
+    - comp: Especifica la operación que realizará la ALU.
+    - dest: Indica dónde almacenar el resultado (A, D, M o una combinación de ellos).
+    - jump: Controla si debe realizarse un salto condicional basado en el resultado del cómputo.
+
+Ejemplos:
+- D = A + 1: Incrementa el valor de A en 1 y lo guarda en D.
+- 0;JMP: Salta incondicionalmente a la dirección en el registro A.
+- D;JEQ: Salta si el valor en D es igual a cero.
+
+4. Símbolos y Etiquetas
+    El lenguaje ensamblador Hack permite definir etiquetas que facilitan el control del flujo del programa. Las etiquetas son identificadores que marcan una dirección de memoria y se usan con instrucciones de salto.A continuación se muestra un ejemplo :
+    ```
+    (LOOP)
+    .
+    .
+    .
+    @LOOP
+    D;JEQ
+    . rest of the program
+    ```
+    se declara una equiqueta LOOP y se salta otra vez a ella si el registro de datos D es igual a 0.
 <img src="https://limeup.io/wp-content/uploads/2024/02/Assembly-Language.png" width="200" height="150"/>
 
 
