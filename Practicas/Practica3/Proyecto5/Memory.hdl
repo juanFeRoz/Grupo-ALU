@@ -6,7 +6,7 @@ CHIP Memory {
     // Demultiplexa la señal de carga entre las diferentes memorias según las líneas de dirección más altas
     DMux4Way(in=load, sel=address[13..14], a=loadToRAM1, b=loadToRAM2, c=loadToScreen, d=loadToKeyboard);
     
-    // Combinamos las señales para cargar en la RAM de 16K si alguna de las primeras dos opciones es seleccionada
+    // Combinamos las señales para cargar en la RAM de 16K si cualquiera de las primeras dos opciones es seleccionada
     Or(a=loadToRAM1, b=loadToRAM2, out=loadToRAM);
 
     // RAM de 16K respondiendo a las primeras 14 líneas de dirección
