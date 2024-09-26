@@ -18,3 +18,5 @@ Además, las decisiones de arquitectura de software pueden limitar o ampliar las
 ### Referencias
 
 - Nisan, N., & Schocken, S. (2021). The elements of computing systems: building a modern computer from first principles. MIT press
+- Patterson, D. A., & Hennessy, J. L. (2017). Computer Organization and Design: The Hardware/Software Interface. Morgan Kaufmann
+- Harris, S., & Harris, D. (2020). Digital Design and Computer Architecture. Morgan Kaufmann
