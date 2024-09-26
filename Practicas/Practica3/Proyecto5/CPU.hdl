@@ -1,0 +1,49 @@
+CHIP CPU {
+
+    IN  inM[16],         // Entrada del valor de M (M = contenido de RAM[A])
+        instruction[16], // Instrucción a ejecutar
+        reset;           // Señal para reiniciar el programa actual (reset == 1)
+                         // o continuar ejecutando el programa actual (reset == 0).
+
+    OUT outM[16],        // Salida del valor de M
+        writeM,          // ¿Escribir en M?
+        addressM[15],    // Dirección de RAM (de M)
+        pc[15];          // Dirección de ROM (de la próxima instrucción)
+
+    PARTS:
+    // Determina el tipo de instrucción
+    Not(in=instruction[15], out=instA);
+    Not(in=instA, out=instC);
+    
+    And(a=instC, b=instruction[5], out=dirAfromALU);    // ¿Instrucción C y destino al registro A?
+    Mux16(a=instruction, b=aluOut, sel=dirAfromALU, out=regAin);
+    
+    Or(a=instA, b=dirAfromALU, out=loadAreg);    // Carga A si inst de tipo A o C con destino a A
+    ARegister(in=regAin, load=loadAreg, out=Aout);
+    
+    Mux16(a=Aout, b=inM, sel=instruction[12], out=AMout);   // Selecciona A o M basado en el bit 'a'
+
+    And(a=instC, b=instruction[4], out=loadDreg);
+    DRegister(in=aluOut, load=loadDreg, out=Dout);    // Carga el registro D desde la ALU
+    
+    ALU(x=Dout, y=AMout, zx=instruction[11], nx=instruction[10], 
+        zy=instruction[9], ny=instruction[8], f=instruction[7],
+        no=instruction[6], out=aluOut, zr=zrOut, ng=ngOut); // Calcula operación ALU
+        
+    // Configura salidas para escribir en memoria
+    Or16(a=false, b=Aout, out[0..14]=addressM);
+    Or16(a=false, b=aluOut, out=outM);
+    And(a=instC, b=instruction[3], out=writeM);
+    
+    // Calcula condiciones de salto y carga del PC
+    And(a=zrOut, b=instruction[1], out=jumpEqual);    // Es cero y salta si es cero
+    And(a=ngOut, b=instruction[2], out=jumpLessThan);    // Es negativo y salta si es negativo
+    Or(a=zrOut, b=ngOut, out=zeroOrNeg);
+    Not(in=zeroOrNeg, out=positive);            // Es positivo (no cero ni negativo)
+    And(a=positive, b=instruction[0], out=jumpGreaterThan); // Es positivo y salta si es positivo
+    Or(a=jumpEqual, b=jumpLessThan, out=jumpLessEqual);
+    Or(a=jumpLessEqual, b=jumpGreaterThan, out=jumpToA);    // Carga PC si se cumple condición de salto
+    And(a=instC, b=jumpToA, out=loadPC); // Solo salta si es instrucción C
+    Not(in=loadPC, out=incPC);                  // Solo incrementa si no se carga
+    PC(in=Aout, inc=incPC, load=loadPC, reset=reset, out[0..14]=pc);
+}
