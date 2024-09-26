@@ -53,10 +53,8 @@ Ejemplos:
 En la siguiente gráfico se puede apreciar el conjunto de instrucciones completos del lenguaje ensamblador de HACK : <br>
 <img src="https://github.com/user-attachments/assets/a1c136d1-143e-4307-b0e4-76d95b3a430d" width="400" height="350" text-align="center"/>
 <br>
-Para este proyecto se tenia el objetivo que se adquiera una idea de la programación de bajo nivel y concer a profundidas el sistema informático Hack.Esto se hizo escribiendo y ejecutando dos programas de bajo nivel, escritos en el lenguaje ensamblador Hack.El primero de ellos consistia en realizar un programa de multiplicar dos números alojados en 2 registros diferentes , mientras que el segundo a partir de detectar el evento de presionar una tecla del teclado empezar a llenar la pantalla con un patrón que se desease y si se dejaba de presionar dicho patrón se iba borrando progresivamente :
-![imagen](https://github.com/user-attachments/assets/9048f5ff-6ccc-4fc2-89d4-fbd4333c20d1)
-
-
+Para este proyecto se tenia el objetivo que se adquiera una idea de la programación de bajo nivel y concer a profundidas el sistema informático Hack.Esto se hizo escribiendo y ejecutando dos programas de bajo nivel, escritos en el lenguaje ensamblador Hack.El primero de ellos consistia en realizar un programa de multiplicar dos números alojados en 2 registros diferentes , mientras que el segundo a partir de detectar el evento de presionar una tecla del teclado empezar a llenar la pantalla con un patrón que se desease esto mediante el cambio de cada pixel a un color negro y si se dejaba de presionar dicho patrón se iba borrando progresivamente ya que los pixeles se cambiarian a color blanco: <br>
+<img src="https://github.com/user-attachments/assets/9048f5ff-6ccc-4fc2-89d4-fbd4333c20d1" width="400" height="350" text-align="center"/>
 
 # Proyecto 5 : Arquitectura de Computadoras
 En los proyectos anteriores del curso Nand2Tetris, hemos desarrollado los componentes esenciales que forman parte de la arquitectura de una computadora, tales como la ALU (Unidad Aritmético-Lógica) y la RAM (Memoria de Acceso Aleatorio). Estos bloques básicos son cruciales para ejecutar operaciones lógicas y aritméticas, además de proporcionar el almacenamiento temporal necesario durante la ejecución de programas. En este quinto proyecto, integramos todos estos módulos en una plataforma unificada conocida como la Hack Hardware Platform. Este proceso culmina con la creación de una computadora completamente funcional, capaz de ejecutar programas escritos en lenguaje de máquina Hack.
