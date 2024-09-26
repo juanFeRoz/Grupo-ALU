@@ -50,7 +50,6 @@ Ejemplos:
     . rest of the program
     ```
     se declara una equiqueta LOOP y se salta otra vez a ella si el registro de datos D es igual a 0.
-<img src="https://limeup.io/wp-content/uploads/2024/02/Assembly-Language.png" width="200" height="150"/>
 
 
 # Proyecto 5 : Arquitectura de Computadoras
