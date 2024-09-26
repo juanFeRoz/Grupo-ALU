@@ -10,7 +10,7 @@ El propósito de este proyecto es completar el diseño de la CPU Hack y su plata
 ## Memory
 Este código define la implementación de la memoria de la computadora Hack, incluyendo la RAM y las áreas de memoria mapeadas para el manejo de la pantalla y el teclado. La memoria es responsable de almacenar y recuperar datos durante la ejecución de un programa. Se utilizan componentes como multiplexores (Mux16) y demultiplexores (DMux) para seleccionar entre diferentes áreas de memoria dependiendo de la dirección suministrada.
 
-![nand2tetris-mmio](https://github.com/user-attachments/assets/fb961223-9212-429b-8270-df4767b1737d)
+![Memory](https://github.com/user-attachments/assets/fb961223-9212-429b-8270-df4767b1737d)
 
 El siguiente bloque de código muestra cómo se organiza la memoria en función de las direcciones, cargando la RAM o los mapas de memoria de pantalla y teclado según corresponda:
 ```
@@ -39,73 +39,95 @@ CHIP Memory {
 }
 ```
 
-El código utiliza la lógica de selección de direcciones para acceder a la RAM, la pantalla o el teclado según los bits superiores de la dirección. Esto permite que el hardware administre de manera eficiente los distintos recursos de la computadora, facilitando la interacción con el hardware externo. El diseño de la memoria en este código permite la correcta integración de la RAM y las áreas mapeadas de entrada/salida de la pantalla y teclado, formando una parte esencial del sistema de almacenamiento de la computadora Hack. La memoria no solo actúa como un área de almacenamiento de datos temporales, sino que también facilita la interacción con dispositivos externos.
+El código utiliza la lógica de selección de direcciones para acceder a la RAM, la pantalla o el teclado según los bits superiores de la dirección. Esto permite que el hardware administre de manera eficiente los distintos recursos de la computadora, facilitando la interacción con el hardware externo. El diseño de la memoria en este código permite la correcta integración de la RAM y las áreas mapeadas de entrada/salida de la pantalla y teclado, formando una parte esencial del sistema de almacenamiento de la computadora Hack. La memoria no solo actúa como un área de almacenamiento de datos temporales, sino que también facilita 
+a interacción con dispositivos externos.
 
-## Computer
-El archivo Computer.hdl define el ensamblaje completo de la computadora Hack, que incluye la CPU, la memoria y la ROM. Este chip es el componente más alto de la jerarquía, combinando todos los módulos para ejecutar programas escritos en lenguaje de máquina Hack. La CPU procesa las instrucciones almacenadas en la ROM y se comunica con la memoria para realizar las operaciones necesarias.
-
-*Imagen*
-
-El siguiente bloque de código muestra cómo se conectan estos componentes en la computadora Hack:
-```
-CHIP Computer {
-    IN reset;
-
-    PARTS:
-    ROM32K(address=programCounter, out=currentInstruction);
-    CPU(inM=memoryOut, instruction=currentInstruction, reset=reset, 
-        outM=cpuOut, writeM=cpuWrite, addressM=cpuAddress, pc=programCounter);
-    Memory(in=cpuOut, load=cpuWrite, address=cpuAddress, out=memoryOut);
-}
-```
-
-En este diseño, la CPU lee las instrucciones desde la ROM, las ejecuta y escribe o lee datos en la memoria según sea necesario. El reset reinicia la ejecución del programa, lo que es útil para comenzar un nuevo ciclo de ejecución. El código Computer.hdl representa la construcción final de la computadora Hack, conectando todos los componentes principales. Este diseño asegura que la computadora Hack pueda ejecutar cualquier programa de máquina que siga las especificaciones del lenguaje Hack, demostrando cómo interactúan la CPU, la memoria y la ROM en una arquitectura simple pero funcional.
+l![Resultado](https://github.com/user-attachments/assets/f6943dd8-dd9a-45da-b032-9bfc0a10aa38)
 
 ## CPU
 El archivo CPU.hdl define el núcleo del sistema: la CPU (Unidad Central de Procesamiento), que contiene dos registros, A y D, una ALU (Unidad Aritmético-Lógica) y el PC (contador de programa). La CPU ejecuta las instrucciones del programa, controla el flujo de datos entre la memoria y los registros, y toma decisiones lógicas y aritméticas a través de la ALU.
 
-*Imagen*
+![CPU](https://github.com/user-attachments/assets/6f581084-d0f6-4fb1-bfc2-c3468d01d131)
+
 
 A continuación se muestra un fragmento del código que ilustra cómo se organiza la CPU para procesar las instrucciones y gestionar los registros:
 ```
 CHIP CPU {
-    IN  inM[16], instruction[16], reset;
-    OUT outM[16], writeM, addressM[15], pc[15];
+
+    IN  inM[16],         // Entrada del valor de M (M = contenido de RAM[A])
+        instruction[16], // Instrucción a ejecutar
+        reset;           // Señal para reiniciar el programa actual (reset == 1)
+                         // o continuar ejecutando el programa actual (reset == 0).
+
+    OUT outM[16],        // Salida del valor de M
+        writeM,          // ¿Escribir en M?
+        addressM[15],    // Dirección de RAM (de M)
+        pc[15];          // Dirección de ROM (de la próxima instrucción)
 
     PARTS:
-    Not(in=instruction[15], out=aTypeInstruction);
-    Not(in=aTypeInstruction, out=cTypeInstruction);
-    And(a=cTypeInstruction, b=instruction[5], out=loadALUToA);
-    Mux16(a=instruction, b=aluOutput, sel=loadALUToA, out=aRegisterInput);
-    Or(a=aTypeInstruction, b=loadALUToA, out=loadARegister);
-    ARegister(in=aRegisterInput, load=loadARegister, out=aRegisterOutput);
+    // Determina el tipo de instrucción
+    Not(in=instruction[15], out=instA);
+    Not(in=instA, out=instC);
+    
+    And(a=instC, b=instruction[5], out=dirAfromALU);    // ¿Instrucción C y destino al registro A?
+    Mux16(a=instruction, b=aluOut, sel=dirAfromALU, out=regAin);
+    
+    Or(a=instA, b=dirAfromALU, out=loadAreg);    // Carga A si inst de tipo A o C con destino a A
+    ARegister(in=regAin, load=loadAreg, out=Aout);
+    
+    Mux16(a=Aout, b=inM, sel=instruction[12], out=AMout);   // Selecciona A o M basado en el bit 'a'
 
-    Mux16(a=aRegisterOutput, b=inM, sel=instruction[12], out=aluYInput);
-    And(a=cTypeInstruction, b=instruction[4], out=loadDRegister);
-    DRegister(in=aluOutput, load=loadDRegister, out=dRegisterOutput);
-
-    ALU(x=dRegisterOutput, y=aluYInput, zx=instruction[11], nx=instruction[10], 
-        zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], 
-        out=aluOutput, zr=zeroFlag, ng=negativeFlag);
-
-    Or16(a=false, b=aRegisterOutput, out[0..14]=addressM);
-    Or16(a=false, b=aluOutput, out=outM);
-    And(a=cTypeInstruction, b=instruction[3], out=writeM);
-
-    And(a=zeroFlag, b=instruction[1], out=jumpIfEqual);
-    And(a=negativeFlag, b=instruction[2], out=jumpIfLessThan);
-    Or(a=zeroFlag, b=negativeFlag, out=zeroOrNegative);
-    Not(in=zeroOrNegative, out=positiveFlag);
-    And(a=positiveFlag, b=instruction[0], out=jumpIfGreaterThan);
-
-    Or(a=jumpIfEqual, b=jumpIfLessThan, out=jumpIfLessOrEqual);
-    Or(a=jumpIfLessOrEqual, b=jumpIfGreaterThan, out=jumpConditionMet);
-    And(a=cTypeInstruction, b=jumpConditionMet, out=loadProgramCounter);
-
-    Not(in=loadProgramCounter, out=incrementProgramCounter);
-    PC(in=aRegisterOutput, inc=incrementProgramCounter, 
-       load=loadProgramCounter, reset=reset, out[0..14]=pc);
+    And(a=instC, b=instruction[4], out=loadDreg);
+    DRegister(in=aluOut, load=loadDreg, out=Dout);    // Carga el registro D desde la ALU
+    
+    ALU(x=Dout, y=AMout, zx=instruction[11], nx=instruction[10], 
+        zy=instruction[9], ny=instruction[8], f=instruction[7],
+        no=instruction[6], out=aluOut, zr=zrOut, ng=ngOut); // Calcula operación ALU
+        
+    // Configura salidas para escribir en memoria
+    Or16(a=false, b=Aout, out[0..14]=addressM);
+    Or16(a=false, b=aluOut, out=outM);
+    And(a=instC, b=instruction[3], out=writeM);
+    
+    // Calcula condiciones de salto y carga del PC
+    And(a=zrOut, b=instruction[1], out=jumpEqual);    // Es cero y salta si es cero
+    And(a=ngOut, b=instruction[2], out=jumpLessThan);    // Es negativo y salta si es negativo
+    Or(a=zrOut, b=ngOut, out=zeroOrNeg);
+    Not(in=zeroOrNeg, out=positive);            // Es positivo (no cero ni negativo)
+    And(a=positive, b=instruction[0], out=jumpGreaterThan); // Es positivo y salta si es positivo
+    Or(a=jumpEqual, b=jumpLessThan, out=jumpLessEqual);
+    Or(a=jumpLessEqual, b=jumpGreaterThan, out=jumpToA);    // Carga PC si se cumple condición de salto
+    And(a=instC, b=jumpToA, out=loadPC); // Solo salta si es instrucción C
+    Not(in=loadPC, out=incPC);                  // Solo incrementa si no se carga
+    PC(in=Aout, inc=incPC, load=loadPC, reset=reset, out[0..14]=pc);
 }
 ```
 
 Este código muestra cómo la CPU gestiona los registros A y D, utiliza la ALU para procesar datos y realiza saltos condicionales basados en los resultados. Los registros y la ALU trabajan en conjunto para ejecutar las instrucciones y gestionar el flujo de datos, mientras que el PC determina la próxima instrucción a ejecutar. El diseño de la CPU es el corazón de la arquitectura Hack. Su capacidad para manejar instrucciones A y C, ejecutar operaciones aritméticas y lógicas, y controlar el flujo del programa a través del PC, la convierte en el componente más crítico para ejecutar programas en esta plataforma.
+
+## Computer
+El archivo Computer.hdl define el ensamblaje completo de la computadora Hack, que incluye la CPU, la memoria y la ROM. Este chip es el componente más alto de la jerarquía, combinando todos los módulos para ejecutar programas escritos en lenguaje de máquina Hack. La CPU procesa las instrucciones almacenadas en la ROM y se comunica con la memoria para realizar las operaciones necesarias.
+
+![Computer](https://github.com/user-attachments/assets/9a5b5166-7a41-424f-a749-1e69e4aebd30)
+
+El siguiente bloque de código muestra cómo se conectan estos componentes en la computadora Hack:
+```
+CHIP Computer {
+
+    IN reset;  // Señal de reinicio para el computador
+
+    PARTS:
+    // La unidad de memoria de solo lectura (ROM) almacena el programa a ejecutar
+    ROM32K(address=pc, out=instruction);
+    
+    // La unidad central de procesamiento (CPU) ejecuta las instrucciones
+    CPU(inM=dataFromMemory, instruction=instruction, reset=reset, 
+        outM=dataToMemory, writeM=signalWriteM, addressM=memoryAddress, pc=pc);
+    
+    // La memoria principal que interactúa con la CPU para almacenar y recuperar datos
+    Memory(in=dataToMemory, load=signalWriteM, address=memoryAddress, out=dataFromMemory);
+}
+
+```
+
+En este diseño, la CPU lee las instrucciones desde la ROM, las ejecuta y escribe o lee datos en la memoria según sea necesario. El reset reinicia la ejecución del programa, lo que es útil para comenzar un nuevo ciclo de ejecución. El código Computer.hdl representa la construcción final de la computadora Hack, conectando todos los componentes principales. Este diseño asegura que la computadora Hack pueda ejecutar cualquier programa de máquina que siga las especificaciones del lenguaje Hack, demostrando cómo interactúan la CPU, la memoria y la ROM en una arquitectura simple pero funcional.
