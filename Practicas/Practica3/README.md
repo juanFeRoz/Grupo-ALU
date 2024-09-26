@@ -53,7 +53,9 @@ Ejemplos:
 En la siguiente gráfico se puede apreciar el conjunto de instrucciones completos del lenguaje ensamblador de HACK : <br>
 <img src="https://github.com/user-attachments/assets/a1c136d1-143e-4307-b0e4-76d95b3a430d" width="400" height="350" text-align="center"/>
 <br>
-Para este proyecto se tenia el objetivo que se adquiera una idea de la programación de bajo nivel y concer a profundidas el sistema informático Hack.Esto se hizo escribiendo y ejecutando dos programas de bajo nivel, escritos en el lenguaje ensamblador Hack.El primero de ellos consistia en realizar un programa de multiplicar dos números alojados en 2 registros diferentes , mientras que el segundo a partir de detectar el evento de presionar una tecla del teclado empezar a llenar la pantalla con un patrón que se desease y si se dejaba de presionar dicho patrón se iba borrando progresivamente : 
+Para este proyecto se tenia el objetivo que se adquiera una idea de la programación de bajo nivel y concer a profundidas el sistema informático Hack.Esto se hizo escribiendo y ejecutando dos programas de bajo nivel, escritos en el lenguaje ensamblador Hack.El primero de ellos consistia en realizar un programa de multiplicar dos números alojados en 2 registros diferentes , mientras que el segundo a partir de detectar el evento de presionar una tecla del teclado empezar a llenar la pantalla con un patrón que se desease y si se dejaba de presionar dicho patrón se iba borrando progresivamente :
+![imagen](https://github.com/user-attachments/assets/9048f5ff-6ccc-4fc2-89d4-fbd4333c20d1)
+
 
 
 # Proyecto 5 : Arquitectura de Computadoras
