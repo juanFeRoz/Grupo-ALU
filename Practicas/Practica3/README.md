@@ -50,6 +50,8 @@ Ejemplos:
     . rest of the program
     ```
     se declara una equiqueta LOOP y se salta otra vez a ella si el registro de datos D es igual a 0.
+En la siguiente gráfico se puede apreciar el conjunto de instrucciones completos del lenguaje ensamblador de HACK :
+![imagen](https://github.com/user-attachments/assets/a1c136d1-143e-4307-b0e4-76d95b3a430d)
 
 
 # Proyecto 5 : Arquitectura de Computadoras
