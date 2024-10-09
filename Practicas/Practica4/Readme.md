@@ -1,4 +1,8 @@
 Práctica 4 : Ensamblador
 ========================
-
-
+El lenguaje de maquina se especifican en dos tipos , binario y simbólico . La representación binaria es un agregado de 0 y 1 que se traduce en instrucciones de la CPU , mientras que la representación simbólica es una representación mas amigable para el programador , ya que se utilizan mnemónicos para representar las instrucciones de la CPU.La representación simbólica al no estar representando directamente en forma binaria , debe ser traducida a lenguaje de maquina para que la CPU pueda ejecutar las instrucciones , por lo cual aquí entra en juego una pieza de software llamada ensamblador , que traduce el código fuente en lenguaje ensamblador(por eso el lenguaje de maquina de manera simbólica recibe el nombre de lenguaje ensamblador) a lenguaje de maquina.<br>
+En general el lenguaje ensamblador emplea los simbólos para tres propósitos:<br>
+1. **Etiquetas** : Se emplean para referenciar varias ubicaciones en el código , ideal para realizar estructuras de control
+2. **Variables** : Son nombres que se le asignan a una dirección de memoria , para poder referenciarla en el código fuente
+3. **Simbólos predefinidos** : Son nombres que se le asignan a valores constantes o direcciones especiales de memoria.
+El ensamblador debe ser el encargado de recordar que significan cada uno de los simbolos y esta es una de sus funciones principales.<br>
