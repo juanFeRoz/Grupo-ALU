@@ -11,15 +11,19 @@ Hasta este momento se ha creado la arquitectura de HACK , se ha empezado a traba
 
 ## Probando el assembler
 ### Add.asm
+Las pruebas en add.asm mostraron la suma de 2 y 3, almacenando el resultado en RAM[0]. El ensamblador traduce las instrucciones simbólicas a código binario para ser ejecutadas por la CPU HACK. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/8f762e05-996f-487c-836e-c3cb46ce161a)
 
 ### Max.asm
+Las pruebas del ensamblador para Max.asm mostraron cómo se calcula el valor máximo entre R0 y R1, almacenando el resultado en R2. El ensamblador traduce las instrucciones simbólicas que comparan estos registros y asigna el mayor valor en código binario para su ejecución en la CPU HACK. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/f5259f7f-6292-437f-bfd8-081f5a9c1461)
 
 ### MaxL.asm
+Las pruebas del ensamblador para MaxL.asm mostraron la versión sin símbolos del programa Max.asm, diseñada para probar la versión básica del ensamblador. Este programa compara los valores de dos registros y almacena el mayor sin el uso de etiquetas o variables simbólicas, con todas las direcciones de memoria especificadas directamente. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/fb30fff1-7595-495e-a529-36c950c45605)
 
 ### Pong.asm
+Las pruebas del ensamblador para Pong.asm muestran cómo se manipulan registros de memoria y la pila (SP) usando instrucciones como @SP y A=A-1. El panel izquierdo contiene el código simbólico, y el central su traducción binaria. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/1ebd9529-e66d-4ce6-bb68-1a04bc09d3c1)
 
 ### PongL.asm
