@@ -27,15 +27,21 @@ Este programa controla la pila para gestionar la ejecución de diversas instrucc
 ![image](https://github.com/user-attachments/assets/1ebd9529-e66d-4ce6-bb68-1a04bc09d3c1)
 
 ### PongL.asm
+El archivo PongL.asm es una versión sin símbolos del código, donde se manejan directamente las direcciones numéricas para controlar el flujo del programa. El código inicializa el puntero de la pila en la dirección 256 y, a partir de ahí, realiza una serie de operaciones aritméticas y lógicas para manejar la lógica del juego. Incluye operaciones para manipular la pila, comparar valores, controlar el movimiento de la pelota, verificar colisiones y actualizar la pantalla. El código está optimizado para correr en la arquitectura Hack y sigue una estructura básica de manipulación de datos y control de flujo.
 
 ![image](https://github.com/user-attachments/assets/f6a4936a-0a6f-4e9f-8a54-b10cb95cdd06)
 
 ### Rect.asm
+El archivo Rect.asm se encarga de dibujar un rectángulo en la esquina superior izquierda de la pantalla, con un ancho fijo de 16 píxeles y una altura determinada por el valor almacenado en el registro R0. El código comienza cargando el valor de R0 en un contador, que se utiliza para controlar el bucle de dibujo del rectángulo. A través de un bucle, se establece la dirección en la que se debe dibujar, y el código coloca el valor -1 en la memoria de la pantalla, representando píxeles encendidos. El bucle continúa hasta que el contador llega a cero, momento en el cual el programa entra en un bucle infinito, manteniendo el rectángulo dibujado en pantalla.
 ![image](https://github.com/user-attachments/assets/33de4b4a-537b-44cc-9a9a-21ec0c7cfb2b)
 
 ### RectL.asm
 Tiene como objetivo dibujar un rectángulo en la máquina Hack. Inicialmente. Inicialmente, carga el valor en la dirección de memoria 0 del registro D, y si este valor es menor o igual a 0, salta al final del programa. Luego, almacena ese valor como un contador de filas en la posición de memoria 16 y guarda la dirección base de la pantalla (16384) en la posición de memoria 17, esta sirve como puntero de pantalla. A continuación, enciende un píxel en la dirección actual apuntada por 17 escribiendo -1, para posteriormente calcular la dirección de la siguiente fila sumando 32 (el ancho de la pantalla) y actualizar el puntero de pantalla. El contador de filas se decrementa en cada iteración, y si el contador es mayor que 0, el programa repite el proceso hasta completar el rectángulo. Finalmente, el programa termina cuando el contador llega a 0, deteniendo la ejecución.
 ![image](https://github.com/user-attachments/assets/f9a51b4f-464d-449d-8d53-b656171fa705)
+
+
+El código hecho en python simula un ensamblador para convertir instrucciones de un archivo .asm a un archivo binario .hack. Utiliza una tabla de símbolos para asignar direcciones a registros y etiquetas, facilitando la referencia a estas en el código. Soporta instrucciones de tipo A (carga de valores) y tipo C (operaciones), separando cada línea en sus componentes: destino, computación y salto.
+El proceso de tokenización permite descomponer las instrucciones en elementos esenciales, lo que es crucial para su conversión a binario. La función create_binary utiliza tablas de instrucciones y símbolos para generar la representación binaria. El ensamblador también ignora comentarios y líneas vacías, asegurando que solo las instrucciones relevantes se procesen. Finalmente, las instrucciones se escriben en un archivo final.hack.
 
 
 
