@@ -11,28 +11,30 @@ Hasta este momento se ha creado la arquitectura de HACK , se ha empezado a traba
 
 ## Probando el assembler
 ### Add.asm
-Las pruebas en add.asm mostraron la suma de 2 y 3, almacenando el resultado en RAM[0]. El ensamblador traduce las instrucciones simbólicas a código binario para ser ejecutadas por la CPU HACK. A continuación, se muestra la representación simbólica y binaria del programa.
+Este programa tiene como objetivo realizar la suma de los valores 2 y 3, almacenando el resultado en la dirección de memoria RAM[0]. Primero, carga el valor 2 en el registro D utilizando la instrucción @2 y D=A. Luego, añade el valor 3 a lo que ya está almacenado en D con @3 y D=D+A, lo que da como resultado 5. Finalmente, el valor calculado se guarda en la posición de memoria 0 con @0 y M=D. Así, RAM[0] contiene el resultado de la suma. El programa no incluye un bucle, por lo que una vez realizada la operación, termina la ejecución. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/8f762e05-996f-487c-836e-c3cb46ce161a)
 
 ### Max.asm
-Las pruebas del ensamblador para Max.asm mostraron cómo se calcula el valor máximo entre R0 y R1, almacenando el resultado en R2. El ensamblador traduce las instrucciones simbólicas que comparan estos registros y asigna el mayor valor en código binario para su ejecución en la CPU HACK. A continuación, se muestra la representación simbólica y binaria del programa.
+El objetivo de este programa es comparar los valores almacenados en las posiciones de memoria RAM[0] y RAM[1], y guardar el valor mayor en RAM[2]. El programa comienza cargando el valor de RAM[0] en el registro D (@0 y D=M). Luego, resta el valor de RAM[1] (@1 y D=D-M) para determinar cuál es mayor. Si el resultado es positivo, salta a la etiqueta OUTPUT_FIRST, lo que indica que el valor de RAM[0] es mayor. En caso contrario, carga el valor de RAM[1] y lo almacena en D. El resultado final se guarda en RAM[2], y el programa entra en un bucle infinito para detener la ejecución. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/f5259f7f-6292-437f-bfd8-081f5a9c1461)
 
 ### MaxL.asm
-Las pruebas del ensamblador para MaxL.asm mostraron la versión sin símbolos del programa Max.asm, diseñada para probar la versión básica del ensamblador. Este programa compara los valores de dos registros y almacena el mayor sin el uso de etiquetas o variables simbólicas, con todas las direcciones de memoria especificadas directamente. A continuación, se muestra la representación simbólica y binaria del programa.
+Esta versión del programa Max.asm se despoja de símbolos, utilizando directamente direcciones de memoria. El programa sigue el mismo proceso de comparación entre los valores de RAM[0] y RAM[1], y almacena el mayor en RAM[2]. Carga el valor de RAM[0], lo compara con el de RAM[1] restando los dos valores. Si RAM[0] es mayor, salta a la dirección donde se guarda este valor en RAM[2]; de lo contrario, almacena el valor de RAM[1]. Al final, entra en un bucle infinito, deteniendo la ejecución. Las direcciones de memoria están explícitamente definidas en lugar de utilizar etiquetas simbólicas. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/fb30fff1-7595-495e-a529-36c950c45605)
 
 ### Pong.asm
-Las pruebas del ensamblador para Pong.asm muestran cómo se manipulan registros de memoria y la pila (SP) usando instrucciones como @SP y A=A-1. El panel izquierdo contiene el código simbólico, y el central su traducción binaria. A continuación, se muestra la representación simbólica y binaria del programa.
+Este programa controla la pila para gestionar la ejecución de diversas instrucciones en la máquina HACK. Manipula registros como SP, ajustando la dirección actual con A=A-1 y operando sobre la memoria con M=D. El programa incluye múltiples operaciones aritméticas y de control de flujo, asegurándose de que cada valor en la pila se manipule correctamente y que el flujo del programa avance de manera coherente. A continuación, se muestra la representación simbólica y binaria del programa.
 ![image](https://github.com/user-attachments/assets/1ebd9529-e66d-4ce6-bb68-1a04bc09d3c1)
 
 ### PongL.asm
+
 ![image](https://github.com/user-attachments/assets/f6a4936a-0a6f-4e9f-8a54-b10cb95cdd06)
 
 ### Rect.asm
 ![image](https://github.com/user-attachments/assets/33de4b4a-537b-44cc-9a9a-21ec0c7cfb2b)
 
 ### RectL.asm
+Tiene como objetivo dibujar un rectángulo en la máquina Hack. Inicialmente. Inicialmente, carga el valor en la dirección de memoria 0 del registro D, y si este valor es menor o igual a 0, salta al final del programa. Luego, almacena ese valor como un contador de filas en la posición de memoria 16 y guarda la dirección base de la pantalla (16384) en la posición de memoria 17, esta sirve como puntero de pantalla. A continuación, enciende un píxel en la dirección actual apuntada por 17 escribiendo -1, para posteriormente calcular la dirección de la siguiente fila sumando 32 (el ancho de la pantalla) y actualizar el puntero de pantalla. El contador de filas se decrementa en cada iteración, y si el contador es mayor que 0, el programa repite el proceso hasta completar el rectángulo. Finalmente, el programa termina cuando el contador llega a 0, deteniendo la ejecución.
 ![image](https://github.com/user-attachments/assets/f9a51b4f-464d-449d-8d53-b656171fa705)
 
 
