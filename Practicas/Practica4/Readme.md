@@ -6,11 +6,12 @@ En general el lenguaje ensamblador emplea los simbólos para tres propósitos:<b
 - **Variables** : Son nombres que se le asignan a una dirección de memoria , para poder referenciarla en el código fuente
 - **Simbólos predefinidos** : Son nombres que se le asignan a valores constantes o direcciones especiales de memoria.
 
-## Explicación del Assembler
 El ensamblador debe ser el encargado de recordar que significan cada uno de los simbolos y esta es una de sus funciones principales.<br>
 Hasta este momento se ha creado la arquitectura de HACK , se ha empezado a trabajar con el lenguaje ensamblador de HACK , pero , es necesario ahondar en el proceso de construir el ensamblador que convierta el código fuente del lenguaje ensamblador de HACK a codigo de maquina para que pueda ser ejecutado por la CPU de HACK.Algo importante que se debe añadir es que el ensamblador que se realizará en esta práctica no verifica que el código realmente este correcto , el asume que el código es valido.<br>
 
-El código implementa un ensamblador que convierte instrucciones escritas en un archivo .asm a un formato binario .hack, específicamente para el conjunto de instrucciones del procesador Hack del curso "Nand to Tetris".
+## Explicación del Assembler
+
+El código, realizado en Python, implementa un ensamblador que convierte instrucciones escritas en un archivo .asm a un formato binario .hack, específicamente para el conjunto de instrucciones del procesador Hack del curso "Nand to Tetris".
 
 Para gestionar las conversiones, el ensamblador utiliza tablas de símbolos y diccionarios para almacenar instrucciones y sus correspondientes códigos binarios. El diccionario symbols asigna nombres de registros y etiquetas a direcciones de memoria específicas; por ejemplo, R0 se asocia a la dirección 0 y SCREEN a 16384. Esto permite que el ensamblador traduzca etiquetas en instrucciones a direcciones de memoria en el código binario final.
 
@@ -22,7 +23,7 @@ Una vez completadas las asignaciones, el ensamblador procesa nuevamente el archi
 
 Finalmente, el código genera un archivo de salida llamado final.hack, que contiene todas las instrucciones en su formato binario. Este ensamblador no solo traduce instrucciones, sino que también proporciona una comprensión más profunda de cómo interactúan las instrucciones con el hardware a un nivel fundamental.
 
-La siguiente imagen, resume la lógica del código:
+Lo expuesto anteriormente se puede sintetizar en la siguiente imagen:
 
 ![Assembler_Logica](https://github.com/user-attachments/assets/1a2443b7-1518-471b-b99f-65d5b99c8aff)
 
